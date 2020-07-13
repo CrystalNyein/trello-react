@@ -1,0 +1,31 @@
+
+.nav2{
+    margin-top: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.nav2 .nav-flex > *{
+    display: inline;  
+    font-weight: 100; 
+    margin: 0 3px; 
+    font-size: 14px;
+    color: #333333;
+}
+.nav2 .nav-flex h2{
+    font-size: 20px;
+    font-weight: 900;
+}
+.nav2 .nav-flex .link{
+    background-color: rgba(180, 180, 180,0.3);
+}
+
+.nav2 .nav-flex .link:hover{
+    color: #222222;
+    background-color: rgba(180,180,180,0.5);
+}
+
+.nav2 .profile{
+    width: 30px;
+    height: 30px;
+}

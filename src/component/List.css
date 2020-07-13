@@ -1,0 +1,134 @@
+
+
+  .list{
+    min-width: 250px;
+    max-width: 250px;
+    margin: 0 5px;
+    background-color: var(--list);
+    width: 250px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    white-space: normal;
+    max-height: 100%;
+    overflow-y: auto;
+}
+ .list .title{
+    color: #333333;
+    width: 96%;
+    margin: 5px auto;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.list .title .editListTitle {
+    display: none;
+    width: 100%;    
+    padding-left: 10px;
+    width: 100%;
+    border: 2px solid #0079BF;
+    line-height: 20px;
+    margin-bottom: 3px;
+}
+ .list .title >*{
+    
+    font-size: 14px;
+    font-weight: 600;
+}
+
+ .list .title h3{
+    display: block;
+    border: 2px solid transparent;
+    line-height: 20px;
+    padding-left: 10px;
+    cursor: pointer;
+    margin-bottom: 3px;
+}
+
+ .list .title a{    
+    line-height: 28px;
+    height: 28px;
+    padding: 0 7px;
+    color:var(--nav1);
+    border-radius: 5px;
+}
+
+ .list .title a:hover{
+    background-color: #D9DCE2;
+    color:#111111;
+}
+
+ .list .add-card {    
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin: 5px auto;
+    justify-content: space-between;
+    height: 25px;
+    margin-top: 0;
+}   
+ .list .add-card > * {
+    line-height: 25px; 
+    font-size: 13px;   
+    color:#777777;
+    height: 100%;
+    border-radius: 3px;
+}
+
+ .list .add-card p {
+    width: 88%;
+    padding: 0 5px;
+    cursor: pointer;
+}
+ .list .add-card >*:hover{
+    background-color: #D9DCE2;
+    color: #333333;
+}
+ .list .add-card a{
+    padding: 0 8px;
+    font-weight: 400;
+}
+
+ .list .cards{
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.list .add-card-click{
+    display: none;
+    position: relative;
+    width: 237.5px;
+    margin: 0 auto;
+}
+.list .add-card-click textarea{
+    height: 50px;
+    width: 100%;
+    border: none;
+    padding:0 5px;
+    font-size: 14px;
+    background-color: white;
+}
+.list .add-card-click .btn {
+    margin: 5px;
+}
+.list .add-card-click .add{
+    font-size: 13px;
+    padding: 4px 10px;
+    background-color: #229933;
+    margin-left: 0;
+}
+
+.list .add-card-click .add:hover{
+    background-color: #22aa33;
+}
+.list .add-card-click .close{
+    font-size: 18px;
+}
+.list .add-card-click .option {
+    margin: 5px;
+    line-height: 28.8333px;
+}
