@@ -1,0 +1,36 @@
+
+.card-modal{
+    width: 100vw;
+    height: 100vh;
+    overflow: none;
+    border: none;
+    background-color: rgba(0,0,0,0.1);
+}
+
+.card-modal .c-modal-content .action{
+    width: 147px;
+    top: 25px;
+    position: relative;
+}
+.c-modal-content .action .link {
+    background-color: rgba(0,0,0,0.7);
+    color: var(--card);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 3px 10px;
+    display: inline-block;
+    margin: 4px;
+    border: none;
+}
+.c-modal-content .action .link:hover{
+    margin: 4px 8px;
+}
+.c-modal-content .edit-card{
+    position: relative;
+}
+.c-modal-content .edit-card textarea{
+    height: 50px;
+    width: 100%;
+    border: none;
+    background-color: white;
+}

@@ -1,0 +1,151 @@
+
+  .preloader-1 {
+    margin: 0 auto 0;
+    height: 15px;
+  }
+
+.preloader-1 .line {
+    padding: 1px;
+  width: 1px;
+  height: 15px;
+  background: #fff;
+  margin: 10px 1px;
+  display: inline-block;
+  animation: opacity-2 1000ms infinite ease-in-out;
+}
+
+
+.preloader-1 .line-1 { animation-delay: 800ms; }
+.preloader-1 .line-2 { animation-delay: 600ms; }
+.preloader-1 .line-3 { animation-delay: 400ms; }
+.preloader-1 .line-4 { animation-delay: 200ms; }
+.preloader-1 .line-6 { animation-delay: 200ms; }
+.preloader-1 .line-7 { animation-delay: 400ms; }
+.preloader-1 .line-8 { animation-delay: 600ms; }
+.preloader-1 .line-9 { animation-delay: 800ms; }
+
+
+@keyframes opacity-2 { 
+  0% { 
+    opacity: 1;
+    height: 15px;
+  }
+  50% { 
+    opacity: 0;
+    height: 12px;
+  }
+  100% { 
+    opacity: 1;
+    height: 15px;
+  }  
+}
+.nav1{
+    background-color: rgba(0,0,0, 0.2);
+    padding: 3px;
+}
+
+.nav1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.nav-flex{
+    height: 32px;
+}
+
+.nav-flex .link{
+    margin: 0 2px;
+    padding: 0 8px;
+    height: 100%;
+    display: inline-block;
+    border-radius: 3px;
+    color: var(--link-color);
+    background-color: var(--links);
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+}
+.nav-flex .link:hover{
+    color: var(--list);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+.nav-flex .link i {
+    line-height: 32px;
+}
+#search{
+    padding:0;
+    background-color:transparent;
+}
+#search > *{
+    background-color: var(--links);    
+    margin: 0;
+}
+#search  input{
+    vertical-align: top;
+    width: 130px;
+    height: 100%;
+    border: none;
+    padding: 0 5px;
+    border-radius: 3px 0 0 3px;
+}
+
+
+
+#search a{
+    color:var(--link-color);
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+}
+#search:hover > * {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+#search .showOnFocus{
+    display: none ;
+    background-color: #fff;
+    color:#111111;
+}
+#search .left{
+    border-radius: 0;
+}
+#search input:focus {
+    width: 200px;
+    background-color: #fff;
+}
+#search input:focus ~ .showOnFocus{
+    display: inline-block;
+}
+
+
+#search input:focus ~ .showOnInit{
+    display: none;
+}
+
+.nav1 .logo a{
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+    line-height: 30px;
+    color: var(--logo);
+    text-decoration: none;
+}
+
+.nav1 .logo a:hover{
+    color: var(--list);
+}
+
+.nav1 #logo{
+    display: block;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+.profile{
+    background-image: url(../assets/Nyein.jpg);
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    border: none;
+}

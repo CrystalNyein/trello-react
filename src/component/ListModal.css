@@ -1,0 +1,89 @@
+
+.s-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1;  
+    left: 0;
+    top: 0;
+}
+.list-modal{
+    top:118px;
+    width: 300px;
+    min-height: 100px;
+    max-height: 60vh;
+    overflow: auto;
+    border: none;
+}
+.list-modal .s-modal-content {
+    background-color: #fdfdfd;
+    margin: auto;
+    border: 1px solid #dddddd;
+    width: 100%;
+    position: relative;
+}
+
+.list-modal .s-modal-content .s-close{
+    font-size: 20px;
+    color: #aaaaaa;
+    float: right;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    padding:2px 8px;
+    line-height: 21px;
+    margin: 3px;
+}
+.list-modal .s-modal-content .s-close:hover{
+    color: #000;
+    background-color: var(--list);
+}
+.list-modal .s-modal-content h3{    
+    margin: 3px;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: 400;
+    color: var(--nav1);
+}
+
+.list-modal .s-modal-content hr{
+    display: block;
+  background-color: #aaaaaa;
+  height: 1px;
+  border: none;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.s-modal-content .input-title{
+    margin:10px;
+}
+.s-modal-content input{
+    width: 85%;
+}
+
+.s-modal-content .link{
+    color:#333333;
+    text-transform: none;
+    letter-spacing: unset;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 5px 0;
+    font-size: 13px;
+
+}
+
+.s-modal-content .link:hover{
+    background-color: var(--card-hover);
+}
+.s-modal-content .btn{
+    background-color: var(--card-hover);
+    color:#333333;
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.s-modal-content .btn:hover{
+    background-color: var(--list);    
+}

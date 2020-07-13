@@ -1,0 +1,12 @@
+.content-wrapper {
+    overflow-x: auto;
+    padding: 10px 10px 10px 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: calc(100% - 75px);
+}
+
+.content-wrapper .add-border{
+    border-right: 5px solid transparent;
+}

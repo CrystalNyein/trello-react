@@ -1,13 +1,32 @@
-body {
+:root {
+  --logo:#bbc0c0;
+  --nav1:#758282;
+  --links:#949E9D;
+  --link-color:#FFFFFF;
+  --list:#EBECF0;
+  --card-hover:#F4F5F7;
+  --card:#FAFAFA;
+
+}
+* {
+  font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  transition: all 200ms ease-in-out;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+  text-decoration: none;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+input,textarea,button,select{
+  outline: none;
+  box-shadow: none !important;
 }
