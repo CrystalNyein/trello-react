@@ -5,9 +5,11 @@ import Axios from 'axios'
 
 const ListModal = ({archiveList}) => {
     const [listMenu, setlistMenu] = useState();
+    
     useEffect(()=>{
         setlistMenu(document.getElementById("listMenu"));
     },[]);
+    
     const closeModal = () => {
         listMenu.style.display = "none";
     }

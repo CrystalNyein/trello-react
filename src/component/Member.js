@@ -4,7 +4,7 @@ import { getInitName } from '../utils'
 const Member = ({ member }) => {
 
     return (
-        <div class="memInline"><div class="avatar">{getInitName(member.name)}</div></div>
+        <div className="memInline"><div className="avatar">{getInitName(member.name)}</div></div>
     )
 }
 

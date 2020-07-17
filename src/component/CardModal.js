@@ -2,11 +2,25 @@ import React from 'react'
 import './CardModal.css'
 import Member from './Member';
 import Label from './Label';
+import Description from './Description';
+import Axios from 'axios';
 
-const CardModal = ({ card }) => {
+const CardModal = ({ card ,editCardDesc }) => {
     const closeModal = (e) => {
-        console.log(card);
         e.target.parentNode.parentNode.style.display = "none";
+    }
+    const changeDesc = (desc) => {     
+        console.log(card.listId);
+        Axios.put(process.env.REACT_APP_END_POINT+"/card/update/"+card.listId+"/"+card.id,{
+            title: card.title,
+            description: desc,
+            position: card.position,
+            status: card.status
+        })
+        .then(res =>{
+            card.description = res.desc;
+            editCardDesc(res.data,card.listId);
+        });
     }
     return (
         <div id="cardModal" className="s-modal card-modal">
@@ -22,7 +36,7 @@ const CardModal = ({ card }) => {
                         {(card.members && card.members.length !== 0) &&
                             <div className="mem">
                                 <p>Members</p>
-                                <div className="members">{card.members.map(mem => <Member member={mem} />)}
+                                <div className="members">{card.members.map((mem,index) => <Member key={index} member={mem} />)}
                                     <div className="memInline">
                                         <div className="avatar addMem">
                                             <i className="fas fa-plus"></i>
@@ -34,10 +48,10 @@ const CardModal = ({ card }) => {
                             <div className="label">
                                 <p>Labels</p>
                                 <div className="labels">
-                                    {card.labels.map(lab => <Label label={lab} />)}
-                                    <div class="labelInline">
-                                        <div class="lab addLab">
-                                            <i class="fas fa-plus"></i>
+                                    {card.labels.map(lab => <Label key={lab.id} label={lab} />)}
+                                    <div className="labelInline">
+                                        <div className="lab addLab">
+                                            <i className="fas fa-plus"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -49,18 +63,7 @@ const CardModal = ({ card }) => {
                     <h3 className="icon">
                         <i className="fas fa-server"></i>Description<a href="#">Edit</a>
                     </h3>
-                    {card.description ?
-                        <p className="data">{card.description}</p> :
-                        <div>
-                            <textarea id="desc" className="data" placeHolder="Add a more detailed description"></textarea>
-                            <div className="desc-func data">
-                                <div className="desc-save" onclick="saveDescFunc()">Save</div>
-                                <div className="desc-cross" onclick="closeDescFunc()">
-                                    <i className="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                    <Description desc={card.description?card.description:""} changeDescription={changeDesc}/>
                 </div>
                 {/*
             <div className=" desc">

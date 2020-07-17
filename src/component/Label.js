@@ -2,8 +2,8 @@ import React from 'react'
 
 const Label = ({label}) => {
     return (
-        <div class="labelInline">
-            <div class="lab" style={{backgroundColor:label.color}}>
+        <div className="labelInline">
+            <div className="lab" style={{backgroundColor:label.color}}>
             {label.name}
             </div>
         </div>

@@ -70,11 +70,25 @@ const ContentWrapper = () => {
             return prevList;
         })
     }
+    const editCardDesc = (Card,listid) =>  {        
+        let listIndex=Lists.findIndex(l=>l.id===listid);
+        let cardIndex=Lists[listIndex].cards.findIndex(c => c.id === Card.id);
+        let _card=Card;
+        _card.listId = listid;
+        _card.listTitle = Lists[listIndex].title;
+        console.log(_card);
+        setcard(_card);
+        setLists(prevList =>{
+            prevList[listIndex].cards[cardIndex] = Card;
+            return prevList;
+        })
+    }
     const onCardClick = (cardid,listid) => {
         let list=Lists.find(l=>l.id===listid);
         setcard(()=>{
             let card = list.cards.find(c=>c.id===cardid);
             card.listTitle = list.title;
+            card.listId = list.id;
             return card;
         })
     }
@@ -92,7 +106,7 @@ const ContentWrapper = () => {
                 </div>}
             <ListModal archiveList={archiveList} />
             <CardMenuModal />
-            <CardModal card={card}/>
+            <CardModal card={card} editCardDesc={editCardDesc}/>
         </div>
     )
 }
