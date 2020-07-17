@@ -25,13 +25,13 @@
     
 }
 .list .title .editListTitle {
-    display: none;
     width: 100%;    
     padding-left: 10px;
     width: 100%;
     border: 2px solid #0079BF;
     line-height: 20px;
     margin-bottom: 3px;
+    word-break: break-word;
 }
  .list .title >*{
     
@@ -46,6 +46,10 @@
     padding-left: 10px;
     cursor: pointer;
     margin-bottom: 3px;
+}
+.list .title form{
+    width: 100%;    
+    display: none;
 }
 
  .list .title a{    

@@ -29,8 +29,8 @@
     font-weight: bold;
     border-radius: 50%;
     cursor: pointer;
-    padding:2px 8px;
-    line-height: 21px;
+    padding:0 8px;
+    line-height: 27px;
     margin: 3px;
 }
 .list-modal .s-modal-content .s-close:hover{

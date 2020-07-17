@@ -1,32 +1,45 @@
 import React from 'react'
 import './Card.css'
 
-const Card = ({ card }) => {
+const Card = ({ card , listid , onCardClick}) => {
+    
     const editCard = (event) => {
         event.stopPropagation();
+        const cardMenuModal = document.getElementById("cardMenu");
+        const cardEditBox = cardMenuModal.firstChild.nextSibling.firstChild;
+        const cardActionBox = cardMenuModal.firstChild.nextSibling.lastChild;
         const cardLocation = event.target.parentNode.getBoundingClientRect();
+        //get card location
         let top = cardLocation.top;
         const left = cardLocation.left;
-        let right = cardLocation.right;
-        let bottom = cardLocation.bottom;
-        const cardMenuModal = document.getElementById("cardMenu");
-        const cardEditBox = cardMenuModal.firstChild.firstChild;
-        const cardActionBox = cardMenuModal.firstChild.lastChild;
-        cardEditBox.style.width = "237.5px";
+        let right = cardLocation.right;        
+        //set location of card edit box
+        cardEditBox.style.width = cardLocation.width+"px";
         cardEditBox.style.top = top + "px";
         cardEditBox.style.left = left + "px";
-        cardEditBox.firstChild.value = event.target.parentNode.querySelector("h4").innerText;
-        if(window.innerWidth-right < 143){
-            right=left-155;
-            cardActionBox.childNodes.forEach(node=>node.className+=" float-right");
+        cardEditBox.firstChild.value = card.title;
+        //focus and select input 
+        setTimeout(()=>{
+            cardEditBox.firstChild.focus();
+            cardEditBox.firstChild.select();
+        },10)
+        //checking space left available
+        if(window.innerWidth-right < 175){
+            right=left-175;
+            cardActionBox.childNodes.forEach(node=>{
+                node.classList.remove('float-left');
+                node.className+=" float-right";
+            });
         }
         else{
-            cardActionBox.childNodes.forEach(node => node.classList.remove('float-right'));
+            cardActionBox.childNodes.forEach(node =>{ 
+                node.classList.remove('float-right');                
+                node.className+=" float-left";
+            });
         }
-        console.log(window.innerHeight - top);
+        //set location for Action box
         if(window.innerHeight - top < 210){
             top =window.innerHeight - 310;
-            console.log(top);
             cardActionBox.style.top = top + "px";
         }
         else{            
@@ -35,8 +48,12 @@ const Card = ({ card }) => {
         cardActionBox.style.left = right + 3 + "px";
         cardMenuModal.style.display = "block";
     }
+    const openModal = () => {
+        document.getElementById("cardModal").style.display="block";
+        onCardClick(card.id,listid);
+    }
     return (
-        <div className="ownCard" >
+        <div className="ownCard" onClick={openModal}>
             {
                 card.labels && card.labels.map(label => (
                     <hr style={{ backgroundColor: label.color }} key={label.id}></hr>
@@ -51,7 +68,7 @@ const Card = ({ card }) => {
                     )
                 }
                 {
-                    (card.checklists.length !== 0) && (
+                    (card.checklists && card.checklists.length !== 0) && (
                         <a><i className="far fa-check-square"></i>{card.checklists.length}</a>
                     )
                 }
@@ -60,9 +77,8 @@ const Card = ({ card }) => {
                         <div className="avatar"></div>
                     )
                 }
-            </div>
+            </div>          
         </div>
-
     )
 }
 

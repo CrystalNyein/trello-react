@@ -1,0 +1,496 @@
+.card-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+.card-modal .s-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    min-height: 850px;
+    width: 60%;
+    background-color: var(--card-hover);
+    padding:10px;
+    position: relative;
+  }
+  
+  .card-modal .s-modal-content .s-close {
+    color: #aaaaaa;
+    float: right;
+    padding: 0 12px;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 50%;
+}
+  
+  .card-modal .s-modal-content .s-close:hover,
+  .card-modal .s-modal-content .s-close:focus {
+    color: #000;
+    background-color: var(--list);
+    cursor: pointer;
+  }
+
+  .card-modal .s-modal-content .icon i{
+      margin-left: 5px;
+      margin-right: 18px;
+  }
+  .card-modal .s-modal-content h3{
+      margin: 0;
+      margin-top: 5px;
+      font-size: 20px;
+      font-weight: 700;
+      color:#333333;
+  }
+
+  .card-modal .s-modal-content .data {
+      margin-left: 45px !important;
+  }
+  .card-modal .s-modal-content p {
+      font-size: 14px;
+      color:var(--nav1);
+      margin: 0;
+  }
+
+  .card-modal .s-modal-content p a{      
+    color:var(--nav1);
+      text-decoration: underline;
+  }
+
+  .card-modal .s-modal-content .members .memInline ,.card-modal .s-modal-content .labels .labelInline{
+      display:inline-block;
+      margin-right: 5px;
+  }
+
+  .card-modal .s-modal-content .mem-label  p{
+      font-weight: 100;
+      text-transform: uppercase;
+      color:var(--nav1);
+      font-size: 0.8em;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+  }
+
+  .card-modal .s-modal-content .members .avatar {
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding:3px;
+      text-align: center;
+      border-radius: 50%;     
+      background-color:#e1e4e4;
+      color: #555555;
+      width: 32px;
+      height: 32px;      
+      cursor: pointer;
+  }
+  .card-modal .s-modal-content .avatar:hover{
+      color: #111111;
+      background-color: #d4dddb;
+  }
+  .card-modal .s-modal-content .mem-label {
+      width: 64%;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+  }
+  .card-modal .s-modal-content .mem-label .mem{
+    margin-right: 50px;
+  }
+
+  .card-modal .s-modal-content .labels .lab{
+      min-width: 30px;
+    border-radius: 3px;
+    height: 28px;
+    padding: 3px 10px;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--link-color);
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .card-modal .s-modal-content .labels .addLab{
+      text-align: center;      
+      color:#777777;
+      width: 15px;
+      height: 29px;
+      border-radius: 3px;
+      padding: 0;
+      background-color:#e1e4e4;
+  }
+  .card-modal .s-modal-content .labels .lab:hover{
+      opacity: 85%;
+      cursor: pointer;
+  }
+  .card-modal .s-modal-content .labels .addLab:hover{
+      color:#111111;
+      background-color: #d4dddb;
+}
+
+.card-modal .s-modal-content .desc{
+    margin: 20px 0;
+    width: 70%;
+}
+
+.card-modal .s-modal-content .desc a{
+    font-size: 15px;
+    margin-left: 10px;
+    padding:6px 10px;
+    border-radius: 3px;
+    background-color: #ebebec;
+    color:var(--nav1);
+    font-weight: 400;
+}
+
+.card-modal .s-modal-content .desc a:hover{
+    background-color: var(--list);
+    color:#111;
+}
+.card-modal .s-modal-content .desc p {
+    font-size: 15px;
+    color:#555555;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.card-modal .s-modal-content .desc textarea{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 87%;
+    height: 40px;
+    padding: 10px;
+    border: 2px solid transparent;
+    background-color: var(--list);
+    border-radius: 3px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #111111;
+    cursor: pointer;
+}
+
+.card-modal .s-modal-content .desc textarea:hover{
+    background-color: #d4dddb;
+}
+
+.card-modal .s-modal-content .desc textarea:focus{
+    height: 80px;
+    background-color: white;
+    border-color: rgb(44, 44, 187);
+}
+
+.card-modal .s-modal-content .desc .desc-func{
+    display: none;
+    margin-top: 10px;
+}
+
+.card-modal .s-modal-content .desc .desc-save{
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 3px;
+    background-color: rgba(47, 194, 47,1);
+    margin-right: 20px;
+    color: var(--card);
+    cursor: pointer;
+}
+
+.card-modal .s-modal-content .desc .desc-save:hover{
+    background-color: rgba(47, 194, 47,0.8);
+}
+.card-modal .s-modal-content .desc .desc-cross{
+    display: inline-block;
+    color:#555555;
+    font-weight: 300;
+}
+.card-modal .s-modal-content .desc .desc-cross i{
+    line-height: 36.67px;
+}
+.card-modal .s-modal-content .desc .desc-cross:hover{
+    color:#111111;
+}
+/* The check */
+.card-modal .s-modal-content .checklist{
+    width: 70%;
+}
+.card-modal .s-modal-content .check {
+  display: block;
+  position: relative;
+  padding:10px ;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #333333;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.card-modal .s-modal-content .check .item{
+    background-color: transparent;
+    border: none;
+    color: var(--nav1);
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    margin-left: 40px;
+    height: 20px;
+    outline: none;
+    width: 90%;
+    font-size: 15px;
+}
+
+.check .item:focus {
+    height: 70px;
+    color:#333333;
+    background-color: #dddddd;
+    border-radius: 3px;
+    border: 1px solid var(--logo);
+}
+
+/* Hide the browser's default checkbox */
+.check .checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  z-index: 1;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border: 1.5px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* On mouse-over, add a grey background color */
+.check:hover {
+    background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check .checkbox:checked ~ .checkmark {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check .checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.card-modal .s-modal-content .checklist .check-func{
+    display: none;
+    margin-top: 10px;
+}
+
+.card-modal .s-modal-content .checklist .check-save{
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 3px;
+    background-color: rgba(47, 194, 47,1);
+    margin-left: 0;
+    margin-right: 20px;
+    color: var(--card);
+}
+
+.card-modal .s-modal-content .checklist .check-save:hover{
+    background-color: rgba(47, 194, 47,0.8);
+    cursor: pointer;
+}
+.card-modal .s-modal-content .checklist .check-cross{
+    display: inline-block;
+    color:#555555;
+    font-weight: 300;
+    padding: 0 10px;
+}
+.card-modal .s-modal-content .checklist .check-cross i{
+    line-height: 36.67px;
+}
+.card-modal .s-modal-content .checklist .check-cross:hover{
+    color:#111111;
+}
+.card-modal .s-modal-content .activity .comment-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card-modal .s-modal-content .activity{
+    width: 65%;
+    margin-bottom: 20px;
+}
+
+.card-modal .s-modal-content .activity .title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card-modal .s-modal-content .activity .title .detail{
+    color:var(--nav1);
+    background-color: var(--list);
+    height: 20px;
+    padding: 8px ;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.card-modal .s-modal-content .activity .title .detail:hover{
+    background-color: #e1e4e4;
+    color: #333333;
+}
+
+.card-modal .s-modal-content .activity .avatar{
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    vertical-align: top;
+}
+
+
+.card-modal .s-modal-content .activity .comment{
+    display: inline-block;
+    width: 88%;
+    margin-left: 13px;
+    padding-right: 20px;
+    height: 38.667px;
+    border-radius: 3px;
+    border: 1px solid var(--logo);
+    background-color:var(--card);
+}
+.card-modal .s-modal-content .activity input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+    background-color:var(--card);
+}
+
+.card-modal .s-modal-content .activity .comment:hover{
+    border-bottom: 1px solid var(--nav1);
+}
+.card-modal .s-modal-content .activity .func{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.card-modal .s-modal-content .activity .func p{
+    border-radius: 3px;
+    padding: 8px 10px;
+    background-color: rgba(47, 194, 47,1);
+    color:var(--link-color);
+    cursor: pointer;
+    font-size: 15px;
+    z-index: 1;
+    display: inline-block;
+}
+
+.card-modal .s-modal-content .activity .func p:hover{
+    background-color: rgba(47, 194, 47,0.8);
+    
+}
+.card-modal .s-modal-content .activity .func .add-on i{
+    padding: 10px;
+    border-radius: 3px;
+}
+.card-modal .s-modal-content .activity .func .add-on i:hover{
+    background-color: var(--list);
+}
+
+.card-modal .s-modal-content .activity .func-save .comment-cross{
+    display: inline-block;
+    color:#555555;
+    font-weight: 300;
+    padding: 0 10px;
+}
+.card-modal .s-modal-content .activity .func-save .comment-cross i{
+    line-height: 36.67px;
+}
+.card-modal .s-modal-content .activity .func-save .comment-cross:hover{
+    color:#111111;
+}
+.card-modal .s-modal-content .activity{
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.card-modal .s-modal-content .aside{
+    position: absolute;
+    right: 0;
+    top:50px;
+    width: 29%;
+}
+.card-modal .s-modal-content .aside a{
+    display: block;
+    color:#555555;
+    background-color: var(--list);
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin: 5px 15px;
+}
+
+.card-modal .s-modal-content .aside h5{
+    padding-left: 16px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    color:var(--nav1);
+}
+.card-modal .s-modal-content .aside hr{
+    display: block;    
+    height:1.5px;
+    border: none;
+    background-color: var(--list);
+    margin: 0 15px;
+    width: 165px;
+}
+.card-modal .s-modal-content .aside a:hover{
+    background-color: #e1e4e4;
+}

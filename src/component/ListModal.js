@@ -1,15 +1,21 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import ReactDOM from 'react-dom'
 import './ListModal.css'
 import Axios from 'axios'
 
 const ListModal = ({archiveList}) => {
+    const [listMenu, setlistMenu] = useState();
+    useEffect(()=>{
+        setlistMenu(document.getElementById("listMenu"));
+    },[]);
     const closeModal = () => {
-        document.getElementById("listMenu").style.display = "none";
+        listMenu.style.display = "none";
     }
     const archive = (event) => {
-        const datakey=event.target.parentNode.parentNode.getAttribute('datakey');
-        archiveList(datakey);
+        const listid=event.target.parentNode.parentNode.getAttribute('listid');
+        Axios.put(process.env.REACT_APP_END_POINT + "/list/" + listid + "/status/2")
+        .then(res => archiveList(res.data));
+        listMenu.style.display = "none";
     }
     return (
 
@@ -26,7 +32,7 @@ const ListModal = ({archiveList}) => {
                 <p className="link">Move All Cards in This List...</p>
                 <p className="link">Archive All Cards in This Lists...</p>
                 <hr />
-                <p className="link" id="listArchive" onClick={archive}>Archive This List</p>
+                <p className="link" onClick={archive}>Archive This List</p>
             </div>
         </div>
 
