@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import './List.css'
 import Card from './Card'
 import Axios from 'axios'
 
-const List = ({ list, addCard, editList ,onCardClick}) => {
+const List = ({ list, addCard, editList ,setCardClick,setCardMenuClick}) => {
     const [Title, setTitle] = useState("");
     const [listTitle, setlistTitle] = useState(list.title);
     const [cards, setCards] = useState(list.cards);
 
+    useEffect(() => {
+        setCards(list.cards);
+    }, [list.cards])
     const menuClick = (event) => {
         const menuLocation = event.target.getBoundingClientRect();
         let left = menuLocation.left;
@@ -94,7 +97,7 @@ const List = ({ list, addCard, editList ,onCardClick}) => {
             {(cards) && <div className="cards">{
                 cards.map(card => (
                     card.status === 1 && (
-                        <Card key={card.id} card={card} listid={list.id} onCardClick={onCardClick}/>
+                        <Card key={card.id} setCardClick={setCardClick} setCardMenuClick={setCardMenuClick} card={card} listid={list.id} listTitle={list.title} />
                     )
                 )
                 )

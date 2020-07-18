@@ -13,7 +13,7 @@ const MemberModal = () => {
         </span>
         <h3>Members</h3>
         <hr />
-        <input type="text" placeHolder="Search members" />
+        <input type="text" placeholder="Search members" />
         <p>Board members</p>
         <div className="members"></div>
       </div>

@@ -12,13 +12,15 @@ import LabelModal from './LabelModal';
 const ContentWrapper = () => {
     const [Lists, setLists] = useState([]);
     const [card, setcard] = useState({});
+    const [cardClick, setCardClick] = useState({});
+    const [cardMenuClick, setCardMenuClick] = useState({});
+    const [pos,setPos] = useState([]);
     const fetchData = async () => {
         try {
             const res = await Axios.get(process.env.REACT_APP_END_POINT + "/list");
             setLists(res.data);
         } catch (err) {
             setLists([]);
-            console.log(err);
         }
     }
 
@@ -88,50 +90,45 @@ const ContentWrapper = () => {
             prevList[listIndex].cards[cardIndex] = Card;
             return prevList;
         })
-        console.log("editing card desc:"+card.description);
     }
-    const onCardClick = (cardid,listid) => {
-        let list=Lists.find(l=>l.id==listid);
-        setcard(()=>{
-            let card = list.cards.find(c=>c.id==cardid);
-            card.listTitle = list.title;
-            card.listId = list.id;
-            return card;
-        })
+    // const onCardClick = (cardid,listid) => {
+    //     let list=Lists.find(l=>l.id==listid);
+    //     setcard(()=>{
+    //         let card = list.cards.find(c=>c.id==cardid);
+    //         card.listTitle = list.title;
+    //         card.listId = list.id;
+    //         return card;
+    //     })
+    // }
+    const editCardName = (Card) => {
+        let listIndex=Lists.findIndex(l=>l.id==Card.list.id);
+        let cardIndex=Lists[listIndex].cards.findIndex(c => c.id == Card.id);
+        setcard(prevCard => {
+            prevCard.title = Card.title;
+            return prevCard;
+        });
+        setLists(prevList =>{
+            prevList[listIndex].cards[cardIndex] = Card;
+            return prevList;
+        });
     }
-    const editCardName = (listid,cardid,name) => {
-        console.log("listid:"+listid+" cardid:"+cardid+" name:"+name);
-        let listIndex=Lists.findIndex(l=>l.id==listid);
-        let cardIndex=Lists[listIndex].cards.findIndex(c => c.id == cardid);
-        let _card=Lists[listIndex].cards[cardIndex];
-        Axios.put(
-            process.env.REACT_APP_END_POINT +
-              "/card/update/" +
-              listid +
-              "/" +
-              cardid,
-            {
-              title: name,
-              description: _card.description,
-              position: _card.position,
-              status: _card.status,
-            }
-        ).then(res =>{ 
-            setcard(prevCard =>{
-                prevCard.title = name;
-                return prevCard;
-            });
-            setLists(prevList =>{
-                prevList[listIndex].cards[cardIndex] = res.data;
-                return prevList;
-            })
+    const editCardStatus = (Card) => {
+        let listIndex=Lists.findIndex(l=>l.id==Card.list.id);
+        setcard(prevCard => {
+            prevCard.title = Card.title;
+            return prevCard;
+        });
+        let cards = Lists[listIndex].cards.filter(c=>c.id != Card.id);
+        setLists(prevList =>{
+            prevList[listIndex].cards = cards;
+            return prevList;
         });
     }
     return (
         <div className="content-wrapper" id="content">
             {Lists && Lists.map((list, index) => (
                 (list.status === 1) && (
-                    <List key={index} list={list} addCard={addCard} editList={editList} onCardClick={onCardClick}/>
+                    <List key={index} list={list} addCard={addCard} editList={editList} setCardClick={setCardClick} setCardMenuClick={setCardMenuClick}/>
                 )
             )
             )}
@@ -140,8 +137,8 @@ const ContentWrapper = () => {
                     <AddList addList={addList} position={Lists.length} />
                 </div>}
             <ListModal archiveList={archiveList} />
-            <CardMenuModal editCardName={editCardName}/>
-            <CardModal card={card} editCardDesc={editCardDesc}/>
+            <CardMenuModal card={cardMenuClick} editCardName={editCardName} editCardStatus={editCardStatus} setCardMenuClick={setCardMenuClick}/>
+            <CardModal card={cardClick} editCardDesc={editCardDesc} editCardName={editCardName} setCardClick={setCardClick}/>
             <MemberModal />
             <LabelModal />
         </div>

@@ -27,6 +27,6 @@ a {
 }
 
 input,textarea,button,select{
-  outline: none;
+  outline: none !important;
   box-shadow: none !important;
 }

@@ -1,4 +1,4 @@
-import React,{useState,useEffect}  from "react";
+import React, { useState, useEffect } from "react";
 import "./CardModal.css";
 import Member from "./Member";
 import Label from "./Label";
@@ -8,14 +8,17 @@ import Checklist from "./Checklist";
 import Activity from "./Activity";
 import Aside from "./Aside";
 
-const CardModal = ({ card, editCardDesc }) => {
-  const [Desc, setDesc] = useState(card.description?card.description:"");
-  const [cardTitle, setcardTitle] = useState(card.title);
+const CardModal = ({ card , editCardDesc ,editCardName , setCardClick}) => {
+  const [Desc, setDesc] = useState(card.description ? card.description : "");
+  const [cardTitle, setcardTitle] = useState(card.title ? card.title : "");
   useEffect(() => {
     setDesc(card.description);
-  }, [card.description])
-  const closeModal = (e) => {
-    e.target.parentNode.parentNode.style.display = "none";
+  }, [card.description]);
+  useEffect(() => {
+    setcardTitle(card.title);
+  }, [card.title]);
+  const closeModal = () => {
+    setCardClick({});
   };
   const changeDesc = (desc) => {
     console.log("changing description");
@@ -32,19 +35,48 @@ const CardModal = ({ card, editCardDesc }) => {
         status: card.status,
       }
     ).then((res) => {
-      card.description = res.desc;
       editCardDesc(res.data, card.listId);
     });
   };
   const submitTitle = (e) => {
     e.preventDefault();
-    console.log(e.target);
-  }
-  const openCardTitle = (e) => {    
-    e.target.style.display = "none";
-    e.target.nextSibling.style.display = "inline-block";
-  }
-  return (
+    let textForm;
+    if (e.target.nodeName === "FORM") {
+      textForm = e.target;
+    } else {
+      textForm = e.target.parentNode;
+    }
+    Axios.put(
+      process.env.REACT_APP_END_POINT +
+        "/card/update/" +
+        card.listId +
+        "/" +
+        card.id,
+      {
+        title: textForm.firstChild.value,
+        description: card.description,
+        position: card.position,
+        status: card.status
+      }
+    ).then((res) => {
+      setcardTitle(res.data.title);
+      editCardName(res.data);
+    });
+    textForm.style.display = "none";
+    textForm.previousSibling.style.display = "inline-block";
+  };
+  const openCardTitle = (e) => {
+    const header = e.target;
+    header.style.display = "none";
+    const textForm = header.nextSibling;
+    setTimeout(() => {
+      textForm.firstChild.focus();
+      textForm.firstChild.select();
+    }, 10);
+    textForm.firstChild.value = header.innerText;
+    textForm.style.display = "inline-block";
+  };
+  return card.id ? (
     <div id="cardModal" className="s-modal card-modal">
       <div className="s-modal-content">
         <span className="s-close" onClick={closeModal}>
@@ -52,8 +84,16 @@ const CardModal = ({ card, editCardDesc }) => {
         </span>
         <div className="cardTitle icon">
           <i className="far fa-credit-card"></i>
-          <h3 onClick={openCardTitle}>{card.title}</h3>
-          <form onSubmit={submitTitle}><input type="text" className="rounded" value={cardTitle} onChange={e => setcardTitle(e.target.value)}></input></form>
+          <h3 onClick={openCardTitle}>{cardTitle}</h3>
+          <form onSubmit={submitTitle}>
+            <input
+              type="text"
+              className="rounded"
+              value={cardTitle}
+              onBlur={submitTitle}
+              onChange={e => setcardTitle(e.target.value)}
+            />
+          </form>
         </div>
         <p className="data">
           in list <a href="#">{card.listTitle}</a>
@@ -98,10 +138,7 @@ const CardModal = ({ card, editCardDesc }) => {
           <h3 className="icon">
             <i className="fas fa-server"></i>Description<a href="#">Edit</a>
           </h3>
-          <Description
-            desc={Desc ?Desc:""}
-            changeDescription={changeDesc}
-          />
+          <Description desc={Desc ? Desc : ""} changeDescription={changeDesc} />
         </div>
         {card.checkList && card.checkList.length !== 0 && (
           <div className="checklist">
@@ -129,7 +166,7 @@ const CardModal = ({ card, editCardDesc }) => {
     `<div className="activity"><div className="title"><h3 className="icon"><i className="fas fa-comment-dots"></i>Activity</h3><div className="detail">Show Details</div></div><div className="comment-line"><img src="assets/Nyein.jpg" alt="Avatar" className="avatar "><div className="comment"><input type="text" placeHolder="Write a comment..." onfocus="writeComment(this)"><div className="func"><div className="func-save"><p onclick="saveComment(this)">Save</p><div className="comment-cross" onclick="closeComment(this)"><i className="fas fa-times"></i></div></div><div className="add-on"><i className="fas fa-paperclip"></i><i className="fas fa-at"></i><i className="far fa-smile-beam"></i><i className="far fa-credit-card"></i></div></div></div></div></div>*/}
       </div>
     </div>
-  );
+  ):null;
 };
 
 export default CardModal;
