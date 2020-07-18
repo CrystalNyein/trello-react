@@ -6,6 +6,8 @@ import AddList from './AddList';
 import ListModal from './ListModal';
 import CardMenuModal from './CardMenuModal';
 import CardModal from './CardModal';
+import MemberModal from './MemberModal';
+import LabelModal from './LabelModal';
 
 const ContentWrapper = () => {
     const [Lists, setLists] = useState([]);
@@ -40,7 +42,12 @@ const ContentWrapper = () => {
     // }
     useEffect(() => {
         fetchData();
-        // document.body.addEventListener("click", closeModal);
+        // document.getElementsByClassName("desc-save")[0].addEventListener("click", (event) => {
+        // })
+        // document.body.addEventListener("click", (e) => {
+        //     console.log(e)
+        
+        // });
     }, [])
 
     const addList = (list) => {
@@ -71,26 +78,54 @@ const ContentWrapper = () => {
         })
     }
     const editCardDesc = (Card,listid) =>  {        
-        let listIndex=Lists.findIndex(l=>l.id===listid);
-        let cardIndex=Lists[listIndex].cards.findIndex(c => c.id === Card.id);
-        let _card=Card;
-        _card.listId = listid;
-        _card.listTitle = Lists[listIndex].title;
-        console.log(_card);
-        setcard(_card);
+        let listIndex=Lists.findIndex(l=>l.id==listid);
+        let cardIndex=Lists[listIndex].cards.findIndex(c => c.id == Card.id);
+        setcard(prevCard => {
+            prevCard.description = Card.description;
+            return prevCard;
+        });
         setLists(prevList =>{
             prevList[listIndex].cards[cardIndex] = Card;
             return prevList;
         })
+        console.log("editing card desc:"+card.description);
     }
     const onCardClick = (cardid,listid) => {
-        let list=Lists.find(l=>l.id===listid);
+        let list=Lists.find(l=>l.id==listid);
         setcard(()=>{
-            let card = list.cards.find(c=>c.id===cardid);
+            let card = list.cards.find(c=>c.id==cardid);
             card.listTitle = list.title;
             card.listId = list.id;
             return card;
         })
+    }
+    const editCardName = (listid,cardid,name) => {
+        console.log("listid:"+listid+" cardid:"+cardid+" name:"+name);
+        let listIndex=Lists.findIndex(l=>l.id==listid);
+        let cardIndex=Lists[listIndex].cards.findIndex(c => c.id == cardid);
+        let _card=Lists[listIndex].cards[cardIndex];
+        Axios.put(
+            process.env.REACT_APP_END_POINT +
+              "/card/update/" +
+              listid +
+              "/" +
+              cardid,
+            {
+              title: name,
+              description: _card.description,
+              position: _card.position,
+              status: _card.status,
+            }
+        ).then(res =>{ 
+            setcard(prevCard =>{
+                prevCard.title = name;
+                return prevCard;
+            });
+            setLists(prevList =>{
+                prevList[listIndex].cards[cardIndex] = res.data;
+                return prevList;
+            })
+        });
     }
     return (
         <div className="content-wrapper" id="content">
@@ -105,8 +140,10 @@ const ContentWrapper = () => {
                     <AddList addList={addList} position={Lists.length} />
                 </div>}
             <ListModal archiveList={archiveList} />
-            <CardMenuModal />
+            <CardMenuModal editCardName={editCardName}/>
             <CardModal card={card} editCardDesc={editCardDesc}/>
+            <MemberModal />
+            <LabelModal />
         </div>
     )
 }

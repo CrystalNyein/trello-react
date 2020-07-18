@@ -1,0 +1,35 @@
+
+.card-modal .s-modal-content .aside{
+    position: absolute;
+    right: 0;
+    top:50px;
+    width: 25%;
+}
+.card-modal .s-modal-content .aside a{
+    display: block;
+    color:#555555;
+    background-color: var(--list);
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin: 5px 15px;
+}
+
+.card-modal .s-modal-content .aside h5{
+    padding-left: 16px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    color:var(--nav1);
+}
+.card-modal .s-modal-content .aside hr{
+    display: block;    
+    height:1.5px;
+    border: none;
+    background-color: var(--list);
+    margin: 0 15px;
+    width: 165px;
+}
+.card-modal .s-modal-content .aside a:hover{
+    background-color: #e1e4e4;
+}

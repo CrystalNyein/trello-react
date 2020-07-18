@@ -2,9 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './CardMenuModal.css'
 
-const CardMenuModal = () => {
+const CardMenuModal = ({editCardName}) => {
     const closeModal = (e) =>{
         e.target.parentNode.style.display="none";
+    }
+    const saveCardName = (e) => {
+        const cardName = e.target.previousSibling.value;
+        const cardMenu = document.getElementById("cardMenu");
+        editCardName(cardMenu.getAttribute("listid"),cardMenu.getAttribute("cardid"),cardName);
     }
     return (
         <div id="cardMenu" className="s-modal card-menu-modal">        
@@ -12,7 +17,7 @@ const CardMenuModal = () => {
             <div className="c-modal-content">            
                 <div className="edit-card">
                     <textarea className="rounded"></textarea>
-                    <button className="btn">Save</button>
+                    <button className="btn" onClick={saveCardName}>Save</button>
                 </div>
                 <div className="action">
                     <button className="link rounded">&nbsp;<i className="fas fa-tag"></i>&nbsp;&nbsp;Edit Labels</button>

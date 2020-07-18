@@ -1,6 +1,6 @@
 .card-modal .s-modal-content .desc {
   margin: 20px 0;
-  width: 70%;
+  width: 74%;
 }
 
 .card-modal .s-modal-content .desc a {
@@ -29,29 +29,18 @@
   margin-top: 10px;
   margin-bottom: 15px;
   width: 87%;
-  height: 40px;
   padding: 10px;
-  border: 2px solid transparent;
-  background-color: var(--list);
   border-radius: 3px;
   font-size: 16px;
   line-height: 20px;
   color: #111111;
   cursor: pointer;  
+  transition: height 200ms linear;
   height: 80px;
   background-color: white;
   border-color: rgb(44, 44, 187);
-}
-/* 
-.card-modal .s-modal-content .desc textarea:hover {
-  background-color: #d4dddb;
 }
 
-.card-modal .s-modal-content .desc textarea:focus {
-  height: 80px;
-  background-color: white;
-  border-color: rgb(44, 44, 187);
-} */
 .card-modal .s-modal-content .desc .desc-p textarea {
   display: none;
 }

@@ -3,8 +3,9 @@ import "./Description.css";
 import Axios from "axios";
 
 const Description = ({ desc, changeDescription }) => {
-  const [Desc, setDesc] = useState(desc);
+  const [Desc, setDesc] = useState(desc?desc:"");
   useEffect(() => {
+    console.log(Desc);
     setDesc(desc);
   }, [desc]);
   const changeDesc = (e) => {
@@ -31,7 +32,6 @@ const Description = ({ desc, changeDescription }) => {
       }
   };
   const saveDesc = (e) => {
-      console.log(e.target);
     // const parent = e.target.parentNode;
     // let descfunc;
     // if (e.target === "SPAN") {
@@ -44,12 +44,15 @@ const Description = ({ desc, changeDescription }) => {
     const textarea = document.getElementById("desc-textarea");
     // console.log(textGroup);
     let description = textarea.value;
-    document.getElementById("desc-p").style.display = "block";
+        
+    descFunc.style.display = "none";
     textarea.style.display = "none";
+    
+    document.getElementById("desc-p").style.display = "block";
     if (description !== "Add a more detailed description") {
       changeDescription(description);
     }
-    descFunc.style.display = "none";
+    
   };
 
   const closeDesc = (e) => {
@@ -66,7 +69,7 @@ const Description = ({ desc, changeDescription }) => {
     <div className="desc-fill">
       <div className="desc-p data">
         <p id = "desc-p" onClick={changeDesc}>
-          {desc.length > 0 ? Desc : "Add a more detailed description"}
+          {Desc.length > 0 ? Desc : "Add a more detailed description"}
         </p>
         <textarea id = "desc-textarea"
           value={Desc}

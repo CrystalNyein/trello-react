@@ -1,0 +1,132 @@
+
+/* The check */
+.card-modal .s-modal-content .checklist{
+    width: 78%;
+}
+.card-modal .s-modal-content .check {
+  display: block;
+  position: relative;
+  padding:10px ;
+  padding-left: 5px;
+  margin-bottom: 5px;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #333333;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.card-modal .s-modal-content .check .item{
+    background-color: transparent;
+    border: none;
+    color: var(--nav1);
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    margin-left: 40px;
+    height: 20px;
+    outline: none;
+    width: 90%;
+    font-size: 15px;
+}
+
+.check .item:focus {
+    height: 70px;
+    color:#333333;
+    background-color: #dddddd;
+    border-radius: 3px;
+    border: 1px solid var(--logo);
+}
+
+/* Hide the browser's default checkbox */
+.check .checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  z-index: 1;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border: 1.5px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* On mouse-over, add a grey background color */
+.check:hover {
+    background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check .checkbox:checked ~ .checkmark {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.check .checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.check .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.card-modal .s-modal-content .checklist .check-func{
+    display: none;
+    margin-top: 10px;
+}
+
+.card-modal .s-modal-content .checklist .check-save{
+    display: inline-block;
+    padding: 8px 10px;
+    border-radius: 3px;
+    background-color: rgba(47, 194, 47,1);
+    margin-left: 0;
+    margin-right: 20px;
+    color: var(--card);
+}
+
+.card-modal .s-modal-content .checklist .check-save:hover{
+    background-color: rgba(47, 194, 47,0.8);
+    cursor: pointer;
+}
+.card-modal .s-modal-content .checklist .check-cross{
+    display: inline-block;
+    color:#555555;
+    font-weight: 300;
+    padding: 0 10px;
+}
+.card-modal .s-modal-content .checklist .check-cross i{
+    line-height: 36.67px;
+}
+.card-modal .s-modal-content .checklist .check-cross:hover{
+    color:#111111;
+}

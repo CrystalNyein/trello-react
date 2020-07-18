@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './Card.css'
 
 const Card = ({ card , listid , onCardClick}) => {
-    
+    const [Desc, setDesc] = useState(card.description);
+    useEffect(() => {
+        setDesc(card.description);
+    }, [card.description])
     const editCard = (event) => {
         event.stopPropagation();
         const cardMenuModal = document.getElementById("cardMenu");
@@ -46,6 +49,9 @@ const Card = ({ card , listid , onCardClick}) => {
             cardActionBox.style.top = top - 116 + 25+"px";
         }
         cardActionBox.style.left = right + 3 + "px";
+        //adding data
+        cardMenuModal.setAttribute("listId",listid);
+        cardMenuModal.setAttribute("cardid",card.id);
         cardMenuModal.style.display = "block";
     }
     const openModal = () => {
@@ -63,7 +69,7 @@ const Card = ({ card , listid , onCardClick}) => {
             <h4>{card.title}</h4>
             <div className="info">
                 {
-                    card.description && (
+                    Desc && (
                         <i className="fas fa-align-justify"></i>
                     )
                 }

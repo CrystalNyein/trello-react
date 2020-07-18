@@ -1,0 +1,116 @@
+
+.card-modal .s-modal-content .activity .comment-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.card-modal .s-modal-content .activity{
+    width: 74%;
+    margin-bottom: 20px;
+}
+
+.card-modal .s-modal-content .activity .title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.card-modal .s-modal-content .activity .title .detail{
+    color:var(--nav1);
+    background-color: var(--list);
+    height: 30px;
+    padding: 0 8px ;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 30px;
+    font-size: 15px;
+}
+.card-modal .s-modal-content .activity .title .detail:hover{
+    background-color: #e1e4e4;
+    color: #333333;
+}
+
+.card-modal .s-modal-content .activity .avatar{
+    border: none;
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    vertical-align: top;
+}
+
+
+.card-modal .s-modal-content .activity .comment{
+    display: inline-block;
+    width: 92.5%;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid var(--logo);
+    background-color:var(--card);
+}
+.card-modal .s-modal-content .activity input{
+    width: 100%;
+    height: 29px;
+    padding: 0 10px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+    background-color:var(--card);
+}
+
+.card-modal .s-modal-content .activity .comment:hover{
+    border-bottom: 1px solid var(--nav1);
+}
+.card-modal .s-modal-content .activity .func{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 5px;
+    padding-left: 10px;
+}
+
+.card-modal .s-modal-content .activity .func p{
+    border-radius: 3px;
+    width: 60px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    padding: 0;
+    background-color: rgba(47, 194, 47,1);
+    color:var(--link-color);
+    cursor: pointer;
+    font-size: 15px;
+    z-index: 1;
+    display: inline-block;
+}
+
+.card-modal .s-modal-content .activity .func p:hover{
+    background-color: rgba(47, 194, 47,0.8);
+    
+}
+.card-modal .s-modal-content .activity .func .add-on i{
+    padding: 10px;
+    border-radius: 3px;
+}
+.card-modal .s-modal-content .activity .func .add-on i:hover{
+    background-color: var(--list);
+}
+
+.card-modal .s-modal-content .activity .func-save .comment-cross{
+    margin-left: 5px;
+    display: inline-block;
+    color:#555555;
+    font-weight: 300;
+    padding: 0;
+}
+.card-modal .s-modal-content .activity .func-save .comment-cross i{
+    text-align: center;
+    width: 30px;
+    line-height: 35px;
+}
+.card-modal .s-modal-content .activity .func-save .comment-cross:hover{
+    color:#111111;
+}
