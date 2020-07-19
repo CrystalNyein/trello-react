@@ -1,27 +1,23 @@
-import React,{useEffect,useState} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import './ListModal.css'
 import Axios from 'axios'
 
-const ListModal = ({archiveList}) => {
-    const [listMenu, setlistMenu] = useState();
-    
-    useEffect(()=>{
-        setlistMenu(document.getElementById("listMenu"));
-    },[]);
+const ListModal = ({list,setListEditClick,pos,changeList}) => {
     
     const closeModal = () => {
-        listMenu.style.display = "none";
+        setListEditClick({});
     }
-    const archive = (event) => {
-        const listid=event.target.parentNode.parentNode.getAttribute('listid');
-        Axios.put(process.env.REACT_APP_END_POINT + "/list/" + listid + "/status/2")
-        .then(res => archiveList(res.data));
-        listMenu.style.display = "none";
+    const archive = () => {
+        Axios.put(process.env.REACT_APP_END_POINT + "/list/" + list.id + "/status/2")
+        .then(res => {
+            changeList(res.data);
+        });
+        closeModal();
     }
-    return (
+    return list.id ?(
 
-        <div id="listMenu" className="s-modal list-modal">
+        <div id="listMenu" className="s-modal list-modal" style={{left:((window.innerWidth-pos.right<300)?(window.innerWidth-304):pos.left)+"px"}}>
             <div className="s-modal-content rounded">
                 <span className="s-close" onClick={closeModal}>&times;</span>
                 <h3>List Actions</h3>
@@ -38,7 +34,7 @@ const ListModal = ({archiveList}) => {
             </div>
         </div>
 
-    )
+    ):null;
 }
 
 export default ListModal

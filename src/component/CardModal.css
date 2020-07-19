@@ -24,7 +24,7 @@
   .card-modal .s-modal-content .s-close {
     color: #aaaaaa;
     float: right;
-    padding: 0 12px;
+    padding: 0 13px;
     font-size: 28px;
     font-weight: bold;
     border-radius: 50%;
@@ -36,24 +36,41 @@
     background-color: var(--list);
     cursor: pointer;
   }
+  .card-modal .s-modal-content .icon {
+      padding-left: 0;
+  }
 
   .card-modal .s-modal-content .icon i{
-      margin-left: 5px;
-      margin-right: 18px;
+      margin-left:11px;
+      margin-right:15px;
+      font-size: 18px;
+      color:#555555;
   }
   .card-modal .s-modal-content h3{
       margin: 0;
       margin-top: 5px;
       font-size: 20px;
-      font-weight: 700;
-      color:#333333;
+      font-weight: 600;
+      color:#444444;
       height: 33px;
       line-height: 33px;
       display: inline-block;
   }
+  .card-modal .s-modal-content h4{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color:#333333;
+    height: 33px;
+    line-height: 33px;
+    display: inline-block;
+}
+.card-modal .s-modal-content p a{
+    text-decoration: underline !important;
+}
 
   .card-modal .s-modal-content .cardTitle form {
-      display: none;
+      display: inline-block;
       margin-top: 5px;
       font-size: 20px;
       font-weight: 700;
@@ -79,6 +96,7 @@
       font-size: 14px;
       color:var(--nav1);
       margin: 0;
+      margin-top: 5px;
   }
 
   .card-modal .s-modal-content p a{      
@@ -95,14 +113,14 @@
       font-weight: 100;
       text-transform: uppercase;
       color:var(--nav1);
-      font-size: 0.8em;
+      font-size: 0.75em;
       letter-spacing: 0.05em;
       margin-bottom: 3px;
   }
 
   .card-modal .s-modal-content .members .avatar {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       display: flex;
       flex-direction: column;
       justify-content: center;

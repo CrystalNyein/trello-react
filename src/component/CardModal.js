@@ -8,20 +8,26 @@ import Checklist from "./Checklist";
 import Activity from "./Activity";
 import Aside from "./Aside";
 
-const CardModal = ({ card , editCardDesc ,editCardName , setCardClick}) => {
+const CardModal = ({ card, setCard, setCardClick }) => {
   const [Desc, setDesc] = useState(card.description ? card.description : "");
   const [cardTitle, setcardTitle] = useState(card.title ? card.title : "");
+  const [cardTitleClick, setCardTitleClick] = useState(false);
   useEffect(() => {
     setDesc(card.description);
   }, [card.description]);
   useEffect(() => {
     setcardTitle(card.title);
   }, [card.title]);
+  useEffect(() => {
+    if (card.list) {
+      card.listId = card.list.id;
+      card.listTitle = card.list.title;
+    }
+  });
   const closeModal = () => {
     setCardClick({});
   };
   const changeDesc = (desc) => {
-    console.log("changing description");
     Axios.put(
       process.env.REACT_APP_END_POINT +
         "/card/update/" +
@@ -35,46 +41,32 @@ const CardModal = ({ card , editCardDesc ,editCardName , setCardClick}) => {
         status: card.status,
       }
     ).then((res) => {
-      editCardDesc(res.data, card.listId);
+      setDesc(res.data.description);
+      setCard(res.data);
     });
   };
   const submitTitle = (e) => {
-    e.preventDefault();
-    let textForm;
-    if (e.target.nodeName === "FORM") {
-      textForm = e.target;
-    } else {
-      textForm = e.target.parentNode;
-    }
-    Axios.put(
-      process.env.REACT_APP_END_POINT +
-        "/card/update/" +
-        card.listId +
-        "/" +
-        card.id,
-      {
-        title: textForm.firstChild.value,
-        description: card.description,
-        position: card.position,
-        status: card.status
-      }
-    ).then((res) => {
-      setcardTitle(res.data.title);
-      editCardName(res.data);
-    });
-    textForm.style.display = "none";
-    textForm.previousSibling.style.display = "inline-block";
+    e.preventDefault();    
+    if (card.title !== cardTitle)
+      Axios.put(
+        process.env.REACT_APP_END_POINT +
+          "/card/update/" +
+          card.listId +
+          "/" +
+          card.id,
+        {
+          title: cardTitle,
+          description: card.description,
+          position: card.position,
+          status: card.status,
+        }
+      ).then((res) => {
+        setCard(res.data);
+      });
+    setCardTitleClick(false);
   };
-  const openCardTitle = (e) => {
-    const header = e.target;
-    header.style.display = "none";
-    const textForm = header.nextSibling;
-    setTimeout(() => {
-      textForm.firstChild.focus();
-      textForm.firstChild.select();
-    }, 10);
-    textForm.firstChild.value = header.innerText;
-    textForm.style.display = "inline-block";
+  const openCardTitle = () => {
+    setCardTitleClick(true);
   };
   return card.id ? (
     <div id="cardModal" className="s-modal card-modal">
@@ -84,16 +76,20 @@ const CardModal = ({ card , editCardDesc ,editCardName , setCardClick}) => {
         </span>
         <div className="cardTitle icon">
           <i className="far fa-credit-card"></i>
-          <h3 onClick={openCardTitle}>{cardTitle}</h3>
-          <form onSubmit={submitTitle}>
-            <input
-              type="text"
-              className="rounded"
-              value={cardTitle}
-              onBlur={submitTitle}
-              onChange={e => setcardTitle(e.target.value)}
-            />
-          </form>
+          {cardTitleClick ? (
+            <form onSubmit={submitTitle}>
+              <input
+                type="text"
+                className="rounded"
+                value={cardTitle}
+                onChange={(e) => setcardTitle(e.target.value)}
+                onBlur={submitTitle}
+                autoFocus
+              />
+            </form>
+          ) : (
+            <h3 onClick={openCardTitle}>{cardTitle}</h3>
+          )}
         </div>
         <p className="data">
           in list <a href="#">{card.listTitle}</a>
@@ -135,9 +131,9 @@ const CardModal = ({ card , editCardDesc ,editCardName , setCardClick}) => {
           </div>
         )}
         <div className=" desc">
-          <h3 className="icon">
+          <h4 className="icon">
             <i className="fas fa-server"></i>Description<a href="#">Edit</a>
-          </h3>
+          </h4>
           <Description desc={Desc ? Desc : ""} changeDescription={changeDesc} />
         </div>
         {card.checkList && card.checkList.length !== 0 && (
@@ -151,22 +147,10 @@ const CardModal = ({ card , editCardDesc ,editCardName , setCardClick}) => {
           </div>
         )}
         <Activity />
-        <Aside />
-        {/*
-            <div className=" desc">
-                    <h3 className="icon">
-                        <i className="fas fa-server"></i>Description<a href="#">Edit</a>
-                    </h3>`+
-                (card.description?`
-                <p className="data">${card.description}</p>`:`
-                <textarea id="desc" className="data" onfocus="openDescFunc(this)" placeHolder="Add a more detailed description"></textarea>
-                    <div className="desc-func data">
-                        <div className="desc-save" onclick="saveDescFunc()">Save</div><div className="desc-cross" onclick="closeDescFunc()"><i className="fas fa-times"></i></div></div>`)+
-  `</div>`+getCheckLists(card)+
-    `<div className="activity"><div className="title"><h3 className="icon"><i className="fas fa-comment-dots"></i>Activity</h3><div className="detail">Show Details</div></div><div className="comment-line"><img src="assets/Nyein.jpg" alt="Avatar" className="avatar "><div className="comment"><input type="text" placeHolder="Write a comment..." onfocus="writeComment(this)"><div className="func"><div className="func-save"><p onclick="saveComment(this)">Save</p><div className="comment-cross" onclick="closeComment(this)"><i className="fas fa-times"></i></div></div><div className="add-on"><i className="fas fa-paperclip"></i><i className="fas fa-at"></i><i className="far fa-smile-beam"></i><i className="far fa-credit-card"></i></div></div></div></div></div>*/}
+        <Aside card={card}/>
       </div>
     </div>
-  ):null;
+  ) : null;
 };
 
 export default CardModal;

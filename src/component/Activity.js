@@ -20,10 +20,10 @@ const Activity = () => {
     return (
         <div className="activity">
           <div className="title">
-            <h3 className="icon">
+            <h4 className="icon">
               <i className="fas fa-comment-dots"></i>
               Activity
-            </h3>
+            </h4>
             <div className="detail">Show Details</div>
           </div>
           <div className="comment-line">
@@ -31,7 +31,7 @@ const Activity = () => {
             <div className="comment">
               <input
                 type="text"
-                placeHolder="Write a comment..."
+                placeholder="Write a comment..."
                 onFocus={writeComment}
               />
               <div className="func">

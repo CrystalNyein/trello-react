@@ -10,7 +10,7 @@ const NavOne = () => {
             <div className="nav-flex">
                 <button className="link"><i className="fas fa-th"></i></button>
                 <button className="link"><i className="fas fa-home"></i></button>
-                <button className="link"><i className="fab fa-trello"></i>&nbsp;Boards</button>
+                <button className="link"><i className="fab fa-trello"></i>&nbsp;&nbsp;Boards</button>
                 <button id="search" className="link">
                     <input type="text" id="search-trello"/>
                     <a className="link showOnInit" onClick={openSearchBox}><i className="fas fa-search"></i></a>

@@ -9,23 +9,31 @@
     display: inline;  
     font-weight: 100; 
     margin: 0 3px; 
-    font-size: 14px;
-    color: #333333;
+    font-size: 13px;
+    color: rgb(9, 9, 83);
 }
 .nav2 .nav-flex h2{
+    color: rgb(9, 9, 83);
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 700;
+    margin:0 10px;
 }
 .nav2 .nav-flex .link{
-    background-color: rgba(180, 180, 180,0.3);
+    background-color: rgba(230, 230, 230,0.4);
 }
 
 .nav2 .nav-flex .link:hover{
     color: #222222;
-    background-color: rgba(180,180,180,0.5);
+    background-color: rgba(230,230,230,0.6);
 }
 
-.nav2 .profile{
-    width: 30px;
-    height: 30px;
+.nav2 .avatar{
+    border: none;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    background-color: rgba(255,255,255,0.7);
+}
+.nav2 .avatar:hover {
+    background-color:  rgba(255,255,255,0.8);
 }

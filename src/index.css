@@ -3,13 +3,13 @@
   --nav1:#758282;
   --links:#949E9D;
   --link-color:#FFFFFF;
-  --list:#EBECF0;
+  --list:#ebecf0;
   --card-hover:#F4F5F7;
   --card:#FAFAFA;
 
 }
 * {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   transition: all 200ms ease-in-out;

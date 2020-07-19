@@ -6,14 +6,16 @@
 }
 .card-modal .s-modal-content .activity{
     width: 74%;
-    margin-bottom: 20px;
+    margin: 30px 0;
 }
 
 .card-modal .s-modal-content .activity .title{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin:0;
     margin-bottom: 10px;
+    width: 100%;
 }
 .card-modal .s-modal-content .activity .title .detail{
     color:var(--nav1);
@@ -24,6 +26,7 @@
     cursor: pointer;
     line-height: 30px;
     font-size: 15px;
+    font-weight: 400;
 }
 .card-modal .s-modal-content .activity .title .detail:hover{
     background-color: #e1e4e4;
@@ -35,7 +38,7 @@
     height: 30px;
     width: 30px;
     background-color: transparent;
-    vertical-align: top;
+    margin-left: 5px;
 }
 
 

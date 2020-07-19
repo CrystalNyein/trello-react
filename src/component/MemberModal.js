@@ -1,11 +1,12 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import './MemberModal.css';
 
-const MemberModal = () => {
-    const closeMemberModal = (e) => {
-        e.target.parentNode.parentNode.style.display="none";
+const MemberModal = ({card,setMemberClick}) => {
+  
+    const closeMemberModal = () => {
+      setMemberClick({});
     }
-  return (
+  return (card && card.id) ? (
     <div id="memberModal" className="s-modal">
       <div className="mem-content content">
         <span className="close" onClick={closeMemberModal}>
@@ -18,7 +19,7 @@ const MemberModal = () => {
         <div className="members"></div>
       </div>
     </div>
-  );
+  ):null;
 };
 
 export default MemberModal;

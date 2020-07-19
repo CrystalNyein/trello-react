@@ -19,34 +19,39 @@
 }
 .card-modal .s-modal-content .desc p {
   font-size: 15px;
-  color: #555555;
+  color: #666666;
   font-weight: 400;
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 .card-modal .s-modal-content .desc textarea {
-  margin-top: 10px;
-  margin-bottom: 15px;
-  width: 87%;
-  padding: 10px;
+  width: 100%;
+  padding: 5px 10px;
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 20px;
   color: #111111;
   cursor: pointer;  
   transition: height 200ms linear;
+  height: 40px;
+  background-color: var(--list);
+  border-color: transparent;
+}
+.card-modal .s-modal-content .desc-p textarea {
+  margin-top: 5px;
+}
+.card-modal .s-modal-content .desc-p textarea:hover {
+  background-color: #dddddd;
+}
+.card-modal .s-modal-content .desc-func textarea {  
   height: 80px;
   background-color: white;
   border-color: rgb(44, 44, 187);
 }
 
-.card-modal .s-modal-content .desc .desc-p textarea {
-  display: none;
-}
 .card-modal .s-modal-content .desc .desc-func {
-  display: none;
-  margin-top: 10px;
+  display: block;
+  margin-top: 5px;
 }
 
 .card-modal .s-modal-content .desc .desc-save {

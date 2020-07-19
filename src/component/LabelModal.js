@@ -6,12 +6,12 @@ const LabelModal = () => {
         e.target.parentNode.parentNode.style.display = "none";
     }
     return (
-        <div id="labelModal" className="modal">
+        <div id="labelModal" className="modal" style={{display:"none"}}>
             <div className="label-content content">
             <span className="close" onClick={closeLabelModal}>&times;</span>
             <h3>Labels</h3>
             <hr/>
-            <input type="text" placeHolder="Search labels..."/>
+            <input type="text" placeholder="Search labels..."/>
             <p>Labels</p>
             <div className="labelsInModal"></div>
             <div className="long-btn">Create a new label</div>
