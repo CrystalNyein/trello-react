@@ -33,7 +33,7 @@ const List = ({ list, addCard, editList }) => {
     e.preventDefault();
     Axios.post(process.env.REACT_APP_END_POINT + "/card/add/" + list.id, {
       title: cardTitle,
-      position: cards ? cards.length + 1 : 1,
+      position: list.cards.length + 1,
     }).then((res) => {
       setCards([...cards, res.data]);
       addCard(res.data);
