@@ -8,7 +8,7 @@ const List = ({ list, addCard, editList }) => {
   const [List, setList] = useState(list);
   const [cardTitle, setCardTitle] = useState("");
   const [listTitle, setlistTitle] = useState(list.title);
-  const [cards, setCards] = useState(list.cards);  
+  const [cards, setCards] = useState(list.cards);
   const [listEditClick, setListEditClick] = useState({});
   const [listTitleClick, setListTitleClick] = useState(false);
   const [addCardClick, setAddCardClick] = useState(false);
@@ -47,7 +47,6 @@ const List = ({ list, addCard, editList }) => {
     setAddCardClick(false);
   };
   const editListTitle = () => {
-
     setListTitleClick(true);
   };
   const submitTitle = (e) => {
@@ -72,7 +71,7 @@ const List = ({ list, addCard, editList }) => {
         <div className="title">
           {listTitleClick ? (
             <form onSubmit={submitTitle}>
-              <input 
+              <input
                 type="text"
                 className="editListTitle rounded"
                 value={listTitle}

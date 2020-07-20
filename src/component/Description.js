@@ -15,7 +15,7 @@ const Description = ({ desc, changeDescription }) => {
       textArea.select();
     }, 10);
     setDescClick(true);
-  };  
+  };
   const saveDesc = () => {
     changeDescription(Desc);
     setDescClick(false);

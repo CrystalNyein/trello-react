@@ -1,90 +1,89 @@
-
- .ownCard {
-    background-color: var(--card);
-    width: 95%;
-    margin: 0 auto;
-    margin-bottom: 5px;
-    border-radius: 3px;
-    border-bottom: 1px solid var(--nav1);
-    position: relative;
-    cursor: pointer;
-    min-height: 30px;
-} 
-
- .ownCard:hover{
-    background-color: var(--card-hover);
+.ownCard {
+  background-color: var(--card);
+  width: 94%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  border-bottom: 1px solid var(--nav1);
+  position: relative;
+  cursor: pointer;
+  min-height: 30px;
 }
 
- .ownCard .edit-card::before{
-    content: '\f304';
+.ownCard:hover {
+  background-color: var(--card-hover);
 }
 
- .ownCard .edit-card{
-    position: absolute;
-    top:0;
-    right: 0;
-    padding: 2px 4px;
-    border-radius: 3px;
-    margin: 3px;
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    font-size: 10px;
-    color: var(--card);
-}
- .ownCard:hover .edit-card{
-    color: var(--links);
-}
-.ownCard .edit-card:hover{
-    color:#333333;
-    background-color: #D9DCE2;
+.ownCard .edit-card::before {
+  content: "\f304";
 }
 
- .ownCard hr{
-    display: inline-block;    
-    height:9px !important;
-    border: 0;
-    width: 40px;
-    border-radius: 5px;
-    margin:0 5px;
-    opacity: 1;
+.ownCard .edit-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin: 3px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 10px;
+  color: var(--card);
+}
+.ownCard:hover .edit-card {
+  color: var(--links);
+}
+.ownCard .edit-card:hover {
+  color: #333333;
+  background-color: #d9dce2;
 }
 
-.ownCard h4{
-    line-height: 25px;
-    margin: 0 8px;
-    font-size: 13px;
-    color:#333333;
+.ownCard hr {
+  display: inline-block;
+  height: 9px !important;
+  border: 0;
+  width: 40px;
+  border-radius: 5px;
+  margin: 0;
+  margin-left: 8px;
+  opacity: 1;
 }
-.ownCard .info{
-    width: 95%;
-    margin:0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
+
+.ownCard h4 {
+  line-height: 25px;
+  margin: 0 8px;
+  font-size: 13px;
+  color: #333333;
+}
+.ownCard .info {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .ownCard .info > * {
-    line-height: 20px;
-    padding:0 3px;
-    font-size: 11px;
-    color: #333333;
+  line-height: 20px;
+  padding: 0 3px;
+  font-size: 11px;
+  color: #333333;
 }
 .ownCard .info .member {
-    display: flex;
+  display: flex;
 }
 .ownCard .info .avatar {
-    line-height: 28px;
-    text-align: center;
-    background-color: #D9DCE2;
-    width: 28px;
-    height: 28px;
-    margin-bottom: 3px;
-    margin-left: 3px;
+  line-height: 28px;
+  text-align: center;
+  background-color: #d9dce2;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 3px;
+  margin-left: 3px;
 }
-.ownCard .save{
-    display: none;
-    border: none;
-    margin: 5px;
-    font-size:13px;
-    padding: 5px 15px;
+.ownCard .save {
+  display: none;
+  border: none;
+  margin: 5px;
+  font-size: 13px;
+  padding: 5px 15px;
 }
