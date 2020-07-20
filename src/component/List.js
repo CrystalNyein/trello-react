@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./List.css";
 import Card from "./Card";
 import Axios from "axios";
@@ -31,15 +31,23 @@ const List = ({ list, addCard, editList }) => {
   };
   const cardSubmit = (e) => {
     e.preventDefault();
-    Axios.post(process.env.REACT_APP_END_POINT + "/card/add/" + list.id, {
-      title: cardTitle,
-      position: cards ? cards.length + 1 : 1,
-    }).then((res) => {
-      setCards([...cards, res.data]);
-      addCard(res.data);
-    });
-    setAddCardClick(false);
-    setCardTitle("");
+    if (cardTitle && cardTitle.trim()) {
+      Axios.post(process.env.REACT_APP_END_POINT + "/card/add/" + list.id, {
+        title: cardTitle.trim(),
+        position: list.cards.length + 1,
+      })
+        .then((res) => {
+          setCards([...cards, res.data]);
+          addCard(res.data);
+          setAddCardClick(false);
+          setCardTitle("");
+        })
+        .catch((err) => {
+          console.log(err);
+          setAddCardClick(false);
+          setCardTitle("");
+        });
+    }
   };
   const closeCard = (e) => {
     e.preventDefault();
@@ -66,7 +74,7 @@ const List = ({ list, addCard, editList }) => {
     setListTitleClick(false);
   };
   return List.status === 1 ? (
-    <React.Fragment>
+    <>
       <div className="list" listid={List.id}>
         <div className="title">
           {listTitleClick ? (
@@ -135,7 +143,7 @@ const List = ({ list, addCard, editList }) => {
         pos={pos}
         changeList={changeList}
       />
-    </React.Fragment>
+    </>
   ) : null;
 };
 
