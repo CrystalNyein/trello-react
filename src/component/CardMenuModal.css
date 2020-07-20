@@ -1,54 +1,52 @@
-
-.card-menu-modal{
-    display: block;
-    width: 100vw;
-    height: 100vh;
-    overflow: none;
-    border: none;
-    background-color: rgba(0,0,0,0.4);
+.card-menu-modal {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  overflow: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .card-menu-modal .s-close {
-    font-size: 40px;
-    padding: 10px;
-    color: #aaaaaa;
-    font-weight: 600;
-    line-height: 40px;
-    cursor: pointer;
+  font-size: 40px;
+  padding: 10px;
+  color: #aaaaaa;
+  font-weight: 600;
+  line-height: 40px;
+  cursor: pointer;
 }
-.card-menu-modal .c-modal-content .action{
-    width: 170px;
-    top: 25px;
-    position: relative;
+.card-menu-modal .c-modal-content .action {
+  width: 163px;
+  top: 25px;
+  position: relative;
 }
 .c-modal-content .action .link {
-    background-color: rgba(0,0,0,0.7);
-    color: var(--card);
-    text-decoration: none;
-    font-size: 13px;
-    padding: 3px 10px;
-    display: block;
-    margin: 4px;
-    border: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--card);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 3px 10px;
+  display: block;
+  margin: 4px;
+  border: none;
 }
-.c-modal-content .action .link:hover{
-    margin: 4px 7px;
+.c-modal-content .action .link:hover {
+  margin: 4px 7px;
 }
-.c-modal-content .edit-card{
-    position: relative;
+.c-modal-content .edit-card {
+  position: relative;
 }
-.c-modal-content .edit-card textarea{
-    height: 50px;
-    width: 100%;
-    border: none;
-    background-color: white;
-    padding: 5px;
-    font-size: 14px;
+.c-modal-content .edit-card textarea {
+  height: 50px;
+  width: 100%;
+  border: none;
+  background-color: white;
+  padding: 5px;
+  font-size: 14px;
 }
-.c-modal-content .edit-card .btn {    
-    background-color: #5aac44;
-    font-size: 14px;
-
+.c-modal-content .edit-card .btn {
+  background-color: #5aac44;
+  font-size: 14px;
 }
 .c-modal-content .edit-card .btn:hover {
-    background-color: #61bd4f;
+  background-color: #61bd4f;
 }

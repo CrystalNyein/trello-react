@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import "./CardModal.css";
 import Member from "./Member";
 import Label from "./Label";
@@ -7,8 +7,10 @@ import Axios from "axios";
 import Checklist from "./Checklist";
 import Activity from "./Activity";
 import Aside from "./Aside";
+import { useDocumentEvent } from "../useDocumentEvent";
 
 const CardModal = ({ card, setCard, setCardClick }) => {
+  const ref = useRef(null);
   const [Desc, setDesc] = useState(card.description ? card.description : "");
   const [cardTitle, setcardTitle] = useState(card.title ? card.title : "");
   const [cardTitleClick, setCardTitleClick] = useState(false);
@@ -24,6 +26,15 @@ const CardModal = ({ card, setCard, setCardClick }) => {
       card.listTitle = card.list.title;
     }
   });
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        closeModal();
+      }
+    },
+    [ref]
+  );
+  useDocumentEvent({ type: "mousedown", callback: handleClickOutside });
   const closeModal = () => {
     setCardClick({});
   };
@@ -46,7 +57,7 @@ const CardModal = ({ card, setCard, setCardClick }) => {
     });
   };
   const submitTitle = (e) => {
-    e.preventDefault();    
+    e.preventDefault();
     if (card.title !== cardTitle)
       Axios.put(
         process.env.REACT_APP_END_POINT +
@@ -70,7 +81,7 @@ const CardModal = ({ card, setCard, setCardClick }) => {
   };
   return card.id ? (
     <div id="cardModal" className="s-modal card-modal">
-      <div className="s-modal-content">
+      <div className="s-modal-content" ref={ref}>
         <span className="s-close" onClick={closeModal}>
           &times;
         </span>
@@ -147,7 +158,7 @@ const CardModal = ({ card, setCard, setCardClick }) => {
           </div>
         )}
         <Activity />
-        <Aside card={card}/>
+        <Aside card={card} />
       </div>
     </div>
   ) : null;

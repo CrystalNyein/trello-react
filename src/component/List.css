@@ -64,7 +64,7 @@
 .list .add-card {
   display: flex;
   flex-direction: row;
-  width: 95%;
+  width: 94%;
   margin: 5px auto;
   justify-content: space-between;
   height: 25px;
@@ -103,7 +103,7 @@
 .list .add-card-click {
   display: block;
   position: relative;
-  width: 237.5px;
+  width: 94%;
   margin: 0 auto;
 }
 .list .add-card-click textarea {

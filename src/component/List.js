@@ -4,11 +4,9 @@ import Card from "./Card";
 import Axios from "axios";
 import ListModal from "./ListModal";
 
-const List = ({ list, addCard, editList }) => {
-  const [List, setList] = useState(list);
+const List = ({ list, addCard, editList, archiveList }) => {
   const [cardTitle, setCardTitle] = useState("");
   const [listTitle, setlistTitle] = useState(list.title);
-  const [cards, setCards] = useState(list.cards);
   const [listEditClick, setListEditClick] = useState({});
   const [listTitleClick, setListTitleClick] = useState(false);
   const [addCardClick, setAddCardClick] = useState(false);
@@ -22,10 +20,6 @@ const List = ({ list, addCard, editList }) => {
       setListEditClick(list);
     }
   };
-  const changeList = (List) => {
-    setList(List);
-    editList(List);
-  };
   const addingCard = () => {
     setAddCardClick(true);
   };
@@ -37,7 +31,6 @@ const List = ({ list, addCard, editList }) => {
         position: list.cards.length + 1,
       })
         .then((res) => {
-          setCards([...cards, res.data]);
           addCard(res.data);
           setAddCardClick(false);
           setCardTitle("");
@@ -59,21 +52,21 @@ const List = ({ list, addCard, editList }) => {
   };
   const submitTitle = (e) => {
     e.preventDefault();
-    if (list.title !== listTitle) {
+    if (list.title !== listTitle && listTitle.trim()) {
       Axios.put(process.env.REACT_APP_END_POINT + "/list/" + list.id, {
-        title: listTitle,
+        title: listTitle.trim(),
         position: list.position,
         status: list.status,
       })
         .then((res) => {
           setlistTitle(res.data.title);
-          changeList(res.data);
+          editList(res.data);
         })
         .catch((err) => console.log(err));
     }
     setListTitleClick(false);
   };
-  return List.status === 1 ? (
+  return list.status === 1 ? (
     <>
       <div className="list" listid={List.id}>
         <div className="title">
@@ -95,9 +88,9 @@ const List = ({ list, addCard, editList }) => {
             <i className="fas fa-ellipsis-h"></i>
           </a>
         </div>
-        {cards && (
+        {list.cards && (
           <div className="cards">
-            {cards.map((card) => (
+            {list.cards.map((card) => (
               <Card
                 key={card.id}
                 card={card}
@@ -141,7 +134,7 @@ const List = ({ list, addCard, editList }) => {
         list={listEditClick}
         setListEditClick={setListEditClick}
         pos={pos}
-        changeList={changeList}
+        archiveList={archiveList}
       />
     </>
   ) : null;

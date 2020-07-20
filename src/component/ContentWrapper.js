@@ -5,7 +5,7 @@ import List from "./List";
 import AddList from "./AddList";
 
 const ContentWrapper = () => {
-  const [Lists, setLists] = useState([]);
+  const [lists, setLists] = useState([]);
   const fetchData = async () => {
     try {
       const res = await Axios.get(process.env.REACT_APP_END_POINT + "/list");
@@ -23,14 +23,17 @@ const ContentWrapper = () => {
     setLists((prevList) => [...prevList, list]);
   };
   const editList = (List) => {
-    const index = Lists.findIndex((l) => l.id === List.id);
+    const index = lists.findIndex((l) => l.id === List.id);
     setLists((prevList) => {
       prevList[index] = List;
       return prevList;
     });
   };
+  const archiveList = (listId) => {
+    setLists(lists.filter((list) => list.id !== listId));
+  };
   const addCard = (card) => {
-    const listIndex = Lists.findIndex((l) => l.id === card.list.id);
+    const listIndex = lists.findIndex((l) => l.id === card.list.id);
     setLists((prevList) => {
       prevList[listIndex].cards.push(card);
       return prevList;
@@ -39,18 +42,19 @@ const ContentWrapper = () => {
 
   return (
     <div className="ContentWrapper content-wrapper" id="content">
-      {Lists &&
-        Lists.map((list) => (
+      {lists &&
+        lists.map((list) => (
           <List
             key={list.id}
             list={list}
             addCard={addCard}
             editList={editList}
+            archiveList={archiveList}
           />
         ))}
-      {Lists.length != 0 && (
+      {lists.length != 0 && (
         <div className="add-border">
-          <AddList addList={addList} position={Lists.length} />
+          <AddList addList={addList} position={lists.length} />
         </div>
       )}
     </div>
